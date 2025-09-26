@@ -373,7 +373,7 @@ export default function HomePage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground italic">"{testimonial.testimonial}"</p>
+                  <p className="text-muted-foreground italic">&#34;{testimonial.testimonial}&#34;</p>
                 </CardContent>
               </Card>
             ))}
