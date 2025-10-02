@@ -2,6 +2,13 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu"
+import {
   Calendar,
   Users,
   MessageSquare,
@@ -13,8 +20,10 @@ import {
   Smartphone,
   Globe,
   Zap,
+  ChevronDown,
 } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function HomePage() {
   return (
@@ -23,9 +32,61 @@ export default function HomePage() {
       <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Image src="/kivoos.png" alt="kivoos" width={120} height={40} className="h-8 w-auto" />
+            <Image src="/kivoos-logo.png" alt="kivoos" width={120} height={40} className="h-8 w-auto" />
           </div>
           <nav className="hidden md:flex items-center space-x-8">
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors">
+                <span>Industries</span>
+                <ChevronDown className="w-4 h-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-80 p-4">
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <DropdownMenuLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                      Alimentation & Boissons
+                    </DropdownMenuLabel>
+                    <div className="space-y-1">
+                      <DropdownMenuItem className="text-sm py-1">Restaurant</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Cafés</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Boulangerie et pâtisserie</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Bars et restaurants d&#39;hôtel</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Épicier & Boucher</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Entreprise alimentaire à domicile</DropdownMenuItem>
+                    </div>
+                  </div>
+
+                  <div>
+                    <DropdownMenuLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                      Commerce & Retail
+                    </DropdownMenuLabel>
+                    <div className="space-y-1">
+                      <DropdownMenuItem className="text-sm py-1">Commerce électronique</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Mode et habillement</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Pharmacies & Santé</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Bijoux et accessoires</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Boutique éphémère</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">B2B et vente en gros</DropdownMenuItem>
+                    </div>
+                  </div>
+
+                  <div>
+                    <DropdownMenuLabel className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                      Services
+                    </DropdownMenuLabel>
+                    <div className="space-y-1">
+                      <DropdownMenuItem className="text-sm py-1">Salon de beauté</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Blanchisserie</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Services professionnels</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Réservation d&#39;hôtel</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Éducation</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Services d&#39;impression</DropdownMenuItem>
+                      <DropdownMenuItem className="text-sm py-1">Location</DropdownMenuItem>
+                    </div>
+                  </div>
+                </div>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <a href="#fonctionnalites" className="text-muted-foreground hover:text-foreground transition-colors">
               Fonctionnalités
             </a>
@@ -40,8 +101,12 @@ export default function HomePage() {
             </a>
           </nav>
           <div className="flex items-center space-x-4">
-            <Button variant="ghost">Se connecter</Button>
-            <Button>Essai gratuit</Button>
+            <Link href="/connexion">
+              <Button variant="ghost">Se connecter</Button>
+            </Link>
+            <Link href="/connexion">
+              <Button>Essai gratuit</Button>
+            </Link>
           </div>
         </div>
       </header>
@@ -58,19 +123,20 @@ export default function HomePage() {
                 </Badge>
                 <h1 className="text-4xl lg:text-6xl font-bold text-balance leading-tight">
                   La plateforme complète pour gérer votre
-                  <span className="text-primary"> salon</span> ou
-                  <span className="text-secondary"> boutique</span>
+                  <span className="text-primary"> business</span> local
                 </h1>
                 <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
                   Fini les rendez-vous oubliés, les clients perdus et la paperasse. kivoos centralise tout :
-                  rendez-vous, suivi clients, notifications et statistiques.
+                  rendez-vous, suivi clients, notifications et statistiques pour tous types d&#39;entreprises locales.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8">
-                  Commencer gratuitement
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
+                <Link href="/connexion">
+                  <Button size="lg" className="text-lg px-8">
+                    Commencer gratuitement
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
                 <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent">
                   Voir la démo
                 </Button>
@@ -126,7 +192,7 @@ export default function HomePage() {
           <div className="text-center space-y-4 mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-balance">Vous reconnaissez ces problèmes ?</h2>
             <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
-              Les défis quotidiens des salons et boutiques que kivoos résout
+              Les défis quotidiens des entreprises locales que kivoos résout
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -256,7 +322,9 @@ export default function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full">Commencer l&#39;essai</Button>
+                <Link href="/connexion">
+                  <Button className="w-full">Commencer l&#39;essai</Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -288,7 +356,9 @@ export default function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full">Commencer l&#39;essai</Button>
+                <Link href="/connexion">
+                  <Button className="w-full">Commencer l&#39;essai</Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -387,14 +457,16 @@ export default function HomePage() {
           <div className="space-y-8 max-w-3xl mx-auto">
             <h2 className="text-3xl lg:text-4xl font-bold text-balance">Prêt à transformer votre gestion ?</h2>
             <p className="text-xl opacity-90 text-pretty">
-              Rejoignez les centaines de salons et boutiques qui ont déjà choisi kivoos. Essai gratuit de 14 jours, sans
+              Rejoignez les centaines d&#39;entreprises locales qui ont déjà choisi kivoos. Essai gratuit de 14 jours, sans
               engagement.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="text-lg px-8">
-                Commencer gratuitement
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <Link href="/connexion">
+                <Button size="lg" variant="secondary" className="text-lg px-8">
+                  Commencer gratuitement
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
               <Button
                 size="lg"
                 variant="outline"
@@ -414,7 +486,7 @@ export default function HomePage() {
             <div className="space-y-4">
               <Image src="/kivoos-logo.png" alt="kivoos" width={120} height={40} className="h-8 w-auto" />
               <p className="text-sm text-muted-foreground">
-                La plateforme SaaS qui simplifie la gestion des salons et boutiques en Afrique.
+                La plateforme SaaS qui simplifie la gestion des entreprises locales en Afrique.
               </p>
             </div>
             <div className="space-y-4">
@@ -494,7 +566,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 kivoos. Tous droits réservés. Fait avec ❤️ pour l&#39;Afrique.</p>
+            <p>&copy; 2025 kivoos. Tous droits réservés. Fait avec ❤️ pour l&#39;Afrique.</p>
           </div>
         </div>
       </footer>
