@@ -304,7 +304,7 @@ export default function InscriptionPage() {
 
             <div className="mt-6 text-center text-sm text-muted-foreground">
               Vous avez déjà un compte ?{" "}
-              <Link href="/auth/connexion" className="text-primary hover:underline font-medium">
+              <Link href="/auth/login" className="text-primary hover:underline font-medium">
                 Se connecter
               </Link>
             </div>
