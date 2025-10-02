@@ -101,10 +101,10 @@ export default function HomePage() {
             </a>
           </nav>
           <div className="flex items-center space-x-4">
-            <Link href="/connexion">
+            <Link href="/auth/login">
               <Button variant="ghost">Se connecter</Button>
             </Link>
-            <Link href="/connexion">
+            <Link href="/auth/register">
               <Button>Essai gratuit</Button>
             </Link>
           </div>
@@ -131,7 +131,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/connexion">
+                <Link href="/auth/register">
                   <Button size="lg" className="text-lg px-8">
                     Commencer gratuitement
                     <ArrowRight className="w-5 h-5 ml-2" />
