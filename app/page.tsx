@@ -322,7 +322,7 @@ export default function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/connexion">
+                <Link href="/auth/register">
                   <Button className="w-full">Commencer l&#39;essai</Button>
                 </Link>
               </CardContent>
@@ -356,7 +356,7 @@ export default function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/connexion">
+                <Link href="/auth/register">
                   <Button className="w-full">Commencer l&#39;essai</Button>
                 </Link>
               </CardContent>
@@ -461,7 +461,7 @@ export default function HomePage() {
               engagement.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/connexion">
+              <Link href="/auth/register">
                 <Button size="lg" variant="secondary" className="text-lg px-8">
                   Commencer gratuitement
                   <ArrowRight className="w-5 h-5 ml-2" />
