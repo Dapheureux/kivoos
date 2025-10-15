@@ -43,7 +43,7 @@ export default function Header() {
               <DropdownMenuItem>
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium">Nouveau rendez-vous</p>
-                  <p className="text-xs text-gray-500">Marie Martin - 14h00 aujourd'hui</p>
+                  <p className="text-xs text-gray-500">Marie Martin - 14h00 aujourd&#39;hui</p>
                 </div>
               </DropdownMenuItem>
               <DropdownMenuItem>

@@ -32,7 +32,7 @@ export default function HomePage() {
       <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Image src="/kivoos-logo.png" alt="kivoos" width={120} height={40} className="h-8 w-auto" />
+            <Image src="/kivoos.png" alt="kivoos" width={120} height={40} className="h-8 w-auto" />
           </div>
           <nav className="hidden md:flex items-center space-x-8">
             <DropdownMenu>
@@ -484,7 +484,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <Image src="/kivoos-logo.png" alt="kivoos" width={120} height={40} className="h-8 w-auto" />
+              <Image src="/kivoos.png" alt="kivoos" width={120} height={40} className="h-8 w-auto" />
               <p className="text-sm text-muted-foreground">
                 La plateforme SaaS qui simplifie la gestion des entreprises locales en Afrique.
               </p>

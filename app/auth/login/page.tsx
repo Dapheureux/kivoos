@@ -32,7 +32,7 @@ export default function ConnexionPage() {
     // Simulation d'inscription
     setTimeout(() => {
       setIsLoading(false)
-      window.location.href = "/tableau-de-bord"
+      window.location.href = "/dashboard"
     }, 2000)
   }
 
