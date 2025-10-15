@@ -3,8 +3,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import Sidebar from "@/components/layout/sidebar"
-import Header from "@/components/layout/header"
 import { Calendar, Users, DollarSign, TrendingUp, Phone, Mail, Plus, ArrowRight, AlertCircle } from "lucide-react"
 
 export default function TableauDeBord() {
@@ -129,11 +127,7 @@ export default function TableauDeBord() {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <Sidebar />
-
       <div className="flex-1 flex flex-col overflow-hidden">
-        <Header />
-
         <main className="flex-1 overflow-y-auto p-6">
           {/* En-tête */}
           <div className="mb-8">
