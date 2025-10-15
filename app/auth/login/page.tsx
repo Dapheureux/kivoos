@@ -41,7 +41,7 @@ export default function ConnexionPage() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <Image src="/kivoos-logo.png" alt="Kivoos" width={120} height={40} className="mx-auto mb-4" />
+          <Image src="/kivoos.png" alt="Kivoos" width={120} height={40} className="mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-gray-900">Bienvenue sur Kivoos</h1>
           <p className="text-gray-600 mt-2">La plateforme de gestion pour votre entreprise locale</p>
         </div>

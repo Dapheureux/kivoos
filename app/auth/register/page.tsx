@@ -56,7 +56,7 @@ export default function InscriptionPage() {
             <ArrowLeft className="w-4 h-4" />
             <span>Retour à l&#39;accueil</span>
           </Link>
-          <Image src="/kivoos-logo.png" alt="kivoos" width={150} height={50} className="mx-auto mb-4" />
+          <Image src="/kivoos.png" alt="kivoos" width={150} height={50} className="mx-auto mb-4" />
           <h1 className="text-3xl font-bold">Créer votre compte kivoos</h1>
           <p className="text-muted-foreground mt-2">Commencez votre essai gratuit de 14 jours</p>
         </div>
@@ -304,7 +304,7 @@ export default function InscriptionPage() {
 
             <div className="mt-6 text-center text-sm text-muted-foreground">
               Vous avez déjà un compte ?{" "}
-              <Link href="/auth/login" className="text-primary hover:underline font-medium">
+              <Link href="/auth/connexion" className="text-primary hover:underline font-medium">
                 Se connecter
               </Link>
             </div>
