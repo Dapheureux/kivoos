@@ -36,12 +36,29 @@ import {
 } from "lucide-react"
 
 export default function ServicesPage() {
+  // Types
+  type Service = {
+    id: number
+    nom: string
+    description: string
+    duree: number
+    prix: number
+    categorie: string
+    isActive: boolean
+    nbRendezVous: number
+    revenus: number
+    popularite: number
+    tempsAttente: number
+    satisfaction: number
+    dateCreation: string
+  }
+
   const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const [selectedService, setSelectedService] = useState<any>(null)
+  const [selectedService, setSelectedService] = useState<Service | null>(null)
   const [searchTerm, setSearchTerm] = useState("")
 
   // Données simulées
-  const services = [
+  const services: Service[] = [
     {
       id: 1,
       nom: "Coupe + Brushing",

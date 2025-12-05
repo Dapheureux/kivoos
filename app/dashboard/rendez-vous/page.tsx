@@ -34,17 +34,31 @@ import {
 } from "lucide-react"
 
 export default function RendezVousPage() {
-  const [selectedDate, setSelectedDate] = useState(new Date())
+  // Types
+  type Client = { nom: string; telephone: string; email: string }
+  type ServiceType = { id: number; nom: string; duree: number; prix: number }
+  type Appointment = {
+    id: number
+    client: Client
+    service: ServiceType
+    staff: string
+    dateHeure: string
+    statut: string
+    notes?: string
+    canal: string
+  }
+
+  const [selectedDate] = useState(new Date())
   const [viewMode, setViewMode] = useState<"jour" | "semaine" | "mois">("jour")
   const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const [selectedAppointment, setSelectedAppointment] = useState<any>(null)
+  const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null)
 
   // Données simulées
   const rendezVous = [
     {
       id: 1,
       client: { nom: "Marie Dubois", telephone: "+242 06 123 45 67", email: "marie@email.com" },
-      service: { nom: "Coupe + Brushing", duree: 90, prix: 25000 },
+      service: { id: 1, nom: "Coupe + Brushing", duree: 90, prix: 25000 },
       staff: "Sophie Martin",
       dateHeure: "2024-01-15T09:00:00",
       statut: "confirmé",
@@ -54,7 +68,7 @@ export default function RendezVousPage() {
     {
       id: 2,
       client: { nom: "Jean Kouassi", telephone: "+242 06 987 65 43", email: "jean@email.com" },
-      service: { nom: "Coupe homme", duree: 45, prix: 15000 },
+      service: { id: 2, nom: "Coupe homme", duree: 45, prix: 15000 },
       staff: "Marie Dubois",
       dateHeure: "2024-01-15T10:30:00",
       statut: "en-attente",
@@ -64,7 +78,7 @@ export default function RendezVousPage() {
     {
       id: 3,
       client: { nom: "Fatou Diallo", telephone: "+242 06 555 12 34", email: "fatou@email.com" },
-      service: { nom: "Manucure", duree: 60, prix: 20000 },
+      service: { id: 4, nom: "Manucure", duree: 60, prix: 20000 },
       staff: "Sophie Martin",
       dateHeure: "2024-01-15T14:00:00",
       statut: "nouveau",
@@ -74,7 +88,7 @@ export default function RendezVousPage() {
     {
       id: 4,
       client: { nom: "Paul Mbemba", telephone: "+242 06 777 88 99", email: "paul@email.com" },
-      service: { nom: "Coloration", duree: 120, prix: 35000 },
+      service: { id: 3, nom: "Coloration", duree: 120, prix: 35000 },
       staff: "Marie Dubois",
       dateHeure: "2024-01-15T15:30:00",
       statut: "confirmé",
@@ -83,7 +97,7 @@ export default function RendezVousPage() {
     },
   ]
 
-  const services = [
+  const services: ServiceType[] = [
     { id: 1, nom: "Coupe + Brushing", duree: 90, prix: 25000 },
     { id: 2, nom: "Coupe homme", duree: 45, prix: 15000 },
     { id: 3, nom: "Coloration", duree: 120, prix: 35000 },
@@ -91,7 +105,7 @@ export default function RendezVousPage() {
     { id: 5, nom: "Pédicure", duree: 75, prix: 22000 },
   ]
 
-  const staff = [
+  const staff: { id: number; nom: string }[] = [
     { id: 1, nom: "Marie Dubois" },
     { id: 2, nom: "Sophie Martin" },
     { id: 3, nom: "Claire Nkomo" },
@@ -322,7 +336,7 @@ export default function RendezVousPage() {
           </Card>
 
           {/* Vues calendrier */}
-          <Tabs value={viewMode} onValueChange={(value) => setViewMode(value as any)} className="mb-6">
+          <Tabs value={viewMode} onValueChange={(value: string) => setViewMode(value as "jour" | "semaine" | "mois")} className="mb-6">
             <div className="flex items-center justify-between">
               <TabsList>
                 <TabsTrigger value="jour">Jour</TabsTrigger>
@@ -374,7 +388,7 @@ export default function RendezVousPage() {
                               </div>
                               <p className="text-sm text-gray-600 mb-1">{rdv.service.nom}</p>
                               <p className="text-sm text-gray-500">Staff: {rdv.staff}</p>
-                              {rdv.notes && <p className="text-xs text-gray-500 mt-2 italic">"{rdv.notes}"</p>}
+                              {rdv.notes && <p className="text-xs text-gray-500 mt-2 italic">&quot;{rdv.notes}&quot;</p>}
                             </div>
 
                             <div className="text-right">
