@@ -94,7 +94,7 @@ export default function EquipePage() {
           </DialogTrigger>
           <DialogContent className="max-w-2xl">
             <DialogHeader>
-              <DialogTitle>Ajouter un membre d'équipe</DialogTitle>
+              <DialogTitle>Ajouter un membre d &#39;équipe</DialogTitle>
               <DialogDescription>Invitez un nouveau membre à rejoindre votre établissement</DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">

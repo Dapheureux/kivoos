@@ -125,9 +125,9 @@ export default function ProfilPage() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Passionnée de coiffure depuis plus de 15 ans, j'ai ouvert le Salon Belle Époque en 2015 avec la vision
-                de créer un espace où l'élégance rencontre la modernité. Notre équipe de professionnels qualifiés
-                s'engage à offrir une expérience unique à chaque client, en alliant techniques traditionnelles et
+                Passionnée de coiffure depuis plus de 15 ans, j &#39;ai ouvert le Salon Belle Époque en 2015 avec la vision
+                de créer un espace où l &#39;élégance rencontre la modernité. Notre équipe de professionnels qualifiés
+                s &#39;engage à offrir une expérience unique à chaque client, en alliant techniques traditionnelles et
                 tendances contemporaines.
               </p>
             </CardContent>

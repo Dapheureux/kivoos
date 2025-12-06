@@ -70,17 +70,17 @@ export default function ParametresPage() {
         <TabsContent value="entreprise" className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Informations de l'établissement</CardTitle>
+              <CardTitle>Informations de l &#39;établissement</CardTitle>
               <CardDescription>Gérez les informations publiques de votre entreprise</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="nom-entreprise">Nom de l'établissement</Label>
+                  <Label htmlFor="nom-entreprise">Nom de l &#39;établissement</Label>
                   <Input id="nom-entreprise" defaultValue="Salon Belle Époque" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="type-entreprise">Type d'établissement</Label>
+                  <Label htmlFor="type-entreprise">Type d &#39;établissement</Label>
                   <Select defaultValue="salon">
                     <SelectTrigger id="type-entreprise">
                       <SelectValue />
@@ -155,7 +155,7 @@ export default function ParametresPage() {
               <Separator />
 
               <div className="space-y-4">
-                <h3 className="font-semibold">Horaires d'ouverture</h3>
+                <h3 className="font-semibold">Horaires d &#39;ouverture</h3>
                 {["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"].map((jour) => (
                   <div key={jour} className="flex items-center gap-4">
                     <div className="w-28">
@@ -284,13 +284,13 @@ export default function ParametresPage() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-4">
-                <h3 className="font-semibold">Notifications d'activité</h3>
+                <h3 className="font-semibold">Notifications d &#39;activité</h3>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Nouveau rendez-vous</Label>
                       <p className="text-sm text-muted-foreground">
-                        Recevoir une notification lors d'une nouvelle réservation
+                        Recevoir une notification lors d &#39;une nouvelle réservation
                       </p>
                     </div>
                     <Switch
@@ -311,7 +311,7 @@ export default function ParametresPage() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-0.5">
                       <Label>Annulation de rendez-vous</Label>
-                      <p className="text-sm text-muted-foreground">Être notifié lorsqu'un client annule</p>
+                      <p className="text-sm text-muted-foreground">Être notifié lorsqu &#39;un client annule</p>
                     </div>
                     <Switch
                       checked={notifications.annulationRdv}
@@ -322,7 +322,7 @@ export default function ParametresPage() {
                     <div className="space-y-0.5">
                       <Label>Nouveau client</Label>
                       <p className="text-sm text-muted-foreground">
-                        Notification lors de l'inscription d'un nouveau client
+                        Notification lors de l &#39;inscription d &#39;un nouveau client
                       </p>
                     </div>
                     <Switch
@@ -431,7 +431,7 @@ export default function ParametresPage() {
                     Changer de plan
                   </Button>
                   <Button variant="outline" className="text-red-600 hover:text-red-700 bg-transparent">
-                    Annuler l'abonnement
+                    Annuler l &#39;abonnement
                   </Button>
                 </div>
               </div>
@@ -507,7 +507,7 @@ export default function ParametresPage() {
         <TabsContent value="equipe" className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Gestion de l'équipe</CardTitle>
+              <CardTitle>Gestion de l &#39;équipe</CardTitle>
               <CardDescription>Invitez et gérez les membres de votre équipe</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">

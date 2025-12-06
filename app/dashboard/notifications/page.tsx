@@ -334,7 +334,7 @@ export default function NotificationsPage() {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="dateEnvoi">Date d'envoi</Label>
+                      <Label htmlFor="dateEnvoi">Date d &#39;envoi</Label>
                       <Input type="datetime-local" id="dateEnvoi" />
                     </div>
 
@@ -380,7 +380,7 @@ export default function NotificationsPage() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">Taux d'ouverture</p>
+                    <p className="text-sm font-medium text-gray-600">Taux d &#39;ouverture</p>
                     <p className="text-2xl font-bold text-gray-900">
                       {Math.round(
                         (campagnes.reduce((sum, c) => sum + c.nbOuverts, 0) /

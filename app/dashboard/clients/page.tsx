@@ -193,7 +193,7 @@ export default function ClientsPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="anniversaire">Date d'anniversaire</Label>
+                    <Label htmlFor="anniversaire">Date d &#39;anniversaire</Label>
                     <Input id="anniversaire" type="date" />
                   </div>
 
