@@ -93,7 +93,7 @@ export default function ConnexionPage() {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <Link href="/mot-de-passe-oublie" className="text-sm text-purple-600 hover:text-purple-800">
+                    <Link href="/forgot-password" className="text-sm text-purple-600 hover:text-purple-800">
                       Mot de passe oublié ?
                     </Link>
                   </div>
