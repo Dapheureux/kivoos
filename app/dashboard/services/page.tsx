@@ -18,8 +18,6 @@ import {
 } from "@/components/ui/dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Sidebar from "@/components/layout/sidebar"
-import Header from "@/components/layout/header"
 import {
   Scissors,
   Plus,
@@ -191,10 +189,7 @@ export default function ServicesPage() {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <Sidebar />
-
       <div className="flex-1 flex flex-col overflow-hidden">
-        <Header />
 
         <main className="flex-1 overflow-y-auto p-6">
           {/* En-tête */}
