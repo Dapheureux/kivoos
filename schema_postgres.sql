@@ -51,6 +51,12 @@ BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'notification_status') THEN
     CREATE TYPE notification_status AS ENUM ('pending','sent','failed','cancelled');
   END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'payment_provider') THEN
+    CREATE TYPE payment_provider AS ENUM ('mtn_momo','airtel_money','visa','mastercard','cash');
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'payment_status') THEN
+    CREATE TYPE payment_status AS ENUM ('pending','success','failed','canceled');
+  END IF;
 END$$ LANGUAGE plpgsql;
 
 
@@ -89,9 +95,11 @@ CREATE TABLE IF NOT EXISTS users (
   enterprise_id BIGINT NULL,
   name VARCHAR(150) NOT NULL,
   email VARCHAR(190) NOT NULL UNIQUE,
+  avatar_url VARCHAR(255) NULL,
   phone VARCHAR(40),
   password_hash VARCHAR(255) NOT NULL,
   role user_role NOT NULL DEFAULT 'staff',
+  max_clients INT NOT NULL DEFAULT 0,
   is_active BOOLEAN NOT NULL DEFAULT TRUE,
   last_login_at TIMESTAMPTZ,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
@@ -114,6 +122,7 @@ CREATE TABLE IF NOT EXISTS clients (
   last_name VARCHAR(100),
   phone VARCHAR(40),
   email VARCHAR(190),
+  avatar_url VARCHAR(255) NULL,
   birthday DATE,
   notes TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
@@ -319,4 +328,52 @@ CREATE INDEX idx_integrations_type ON integrations(enterprise_id, type, is_activ
 
 CREATE TRIGGER integrations_set_updated_at
 BEFORE UPDATE ON integrations
+FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+
+-- 12) Orders (commandes/prestations)
+CREATE TABLE IF NOT EXISTS orders (
+  id BIGSERIAL PRIMARY KEY,
+  enterprise_id BIGINT NOT NULL,
+  client_id BIGINT NOT NULL,
+  total_amount NUMERIC(10,2) NOT NULL DEFAULT 0.00,
+  status VARCHAR(50) NOT NULL DEFAULT 'pending',
+  notes TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  CONSTRAINT fk_orders_enterprise FOREIGN KEY (enterprise_id) REFERENCES enterprises(id) ON DELETE CASCADE,
+  CONSTRAINT fk_orders_client FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE
+);
+
+CREATE INDEX idx_orders_enterprise_status ON orders(enterprise_id, status);
+CREATE INDEX idx_orders_client ON orders(client_id);
+
+CREATE TRIGGER orders_set_updated_at
+BEFORE UPDATE ON orders
+FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+
+-- AJOUT : Table payments 
+
+CREATE TABLE IF NOT EXISTS payments (
+  id BIGSERIAL PRIMARY KEY,
+  user_id BIGINT NOT NULL,
+  order_id BIGINT,
+  amount NUMERIC(10,2) NOT NULL,
+  provider payment_provider NOT NULL DEFAULT 'mtn_momo',
+  status payment_status NOT NULL DEFAULT 'pending',
+  transaction_ref VARCHAR(255) UNIQUE,
+  cancel_reason TEXT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  CONSTRAINT fk_pay_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  CONSTRAINT fk_pay_order FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE SET NULL
+);
+
+CREATE INDEX idx_payments_user_status ON payments(user_id, status);
+CREATE INDEX idx_payments_transaction ON payments(transaction_ref);
+CREATE INDEX idx_payments_created ON payments(created_at);
+
+CREATE TRIGGER payments_set_updated_at
+BEFORE UPDATE ON payments
 FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
