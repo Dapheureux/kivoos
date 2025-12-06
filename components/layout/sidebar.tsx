@@ -5,7 +5,20 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Calendar, Users, Settings, BarChart3, Bell, Scissors, Menu, X, Home, LogOut, User } from "lucide-react"
+import {
+  Calendar,
+  Users,
+  Settings,
+  BarChart3,
+  Bell,
+  Scissors,
+  Menu,
+  X,
+  Home,
+  LogOut,
+  User,
+  UserCircle,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navigation = [
@@ -15,6 +28,7 @@ const navigation = [
   { name: "Services", href: "/dashboard/services", icon: Scissors },
   { name: "Notifications", href: "/dashboard/notifications", icon: Bell },
   { name: "Statistiques", href: "/dashboard/statistiques", icon: BarChart3 },
+  { name: "Équipe", href: "/dashboard/equipe", icon: UserCircle },
   { name: "Paramètres", href: "/dashboard/parametres", icon: Settings },
 ]
 
@@ -53,7 +67,7 @@ export default function Sidebar() {
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 px-4 py-6 space-y-2">
+          <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
             {navigation.map((item) => {
               const isActive = pathname === item.href
               return (
@@ -77,15 +91,17 @@ export default function Sidebar() {
 
           {/* User section */}
           <div className="p-4 border-t">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                <User className="h-4 w-4 text-purple-600" />
+            <Link href="/dashboard/profil">
+              <div className="flex items-center space-x-3 mb-4 hover:bg-gray-50 p-2 rounded-lg transition-colors cursor-pointer">
+                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                  <User className="h-4 w-4 text-purple-600" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium text-gray-900 truncate">Salon Belle Époque</p>
+                  <p className="text-xs text-gray-500 truncate">Marie Dubois</p>
+                </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate">Salon Belle Époque</p>
-                <p className="text-xs text-gray-500 truncate">Marie Dubois</p>
-              </div>
-            </div>
+            </Link>
             <Button variant="ghost" className="w-full justify-start text-gray-600 hover:text-gray-900">
               <LogOut className="mr-3 h-4 w-4" />
               Déconnexion
